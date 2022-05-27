@@ -1,0 +1,15 @@
+---
+- block:
+    - name: Install current version on 9 debian
+      apt: deb={{ deb9_pack }}
+  when: ansible_distribution_major_version == "9"
+
+- block:
+    - name: Install current version on 10 debian
+      apt: deb={{ deb10_pack }}
+  when: ansible_distribution_major_version == "10"
+
+- block:  
+    - name: Install current version on 11 debian
+      apt: deb={{ deb11_pack }}
+  when: ansible_distribution_major_version == "11"

@@ -1,0 +1,32 @@
+---
+- name: Change listen port
+  shell: sed -i "s/# ListenPort=/ListenPort=/g" {{ dir_config }}
+  
+- name: Change server passive ip
+  shell: sed -i "s/Server=127.0.0.1/Server={{ srv_ip }}/g" {{ dir_config }}
+
+- name: Change server active ip
+  shell: sed -i "s/ServerActive=127.0.0.1/ServerActive={{ srv_ip }}/g" {{ dir_config }}
+
+- name: Change hostname
+  shell: sed -i "s/Hostname=.*/Hostname=$(cat /home/{{ user }}/.zabb_bak/zabbix_agentd.conf.bak | grep "Hostname=.*" | cut -d '=' -f 2)/g" {{ dir_config }}
+
+- name: Restarted Zabbix
+  systemd:
+    name: zabbix-agent.service
+    state: restarted
+    enabled: yes
+
+- name: Read the config file
+  shell: cat /etc/zabbix/zabbix_agentd.conf | grep "^Hostname=.*" | cut -d '=' -f 2
+  register: zabb_host
+
+- block: #===CHECK NULL HOSTNAME===
+  - name: Check hostname and if it empty write system name
+    shell: sed -i "s/Hostname=.*/Hostname=$(hostnamectl | grep "Static hostname:.*" | cut -d ':' -f 2 | cut -c 2-)/g" {{ dir_config }}
+  - name: Restarted Zabbix
+    systemd:
+      name: zabbix-agent.service
+      state: restarted
+      enabled: yes
+  when: zabb_host.stdout == ""

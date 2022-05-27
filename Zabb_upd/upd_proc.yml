@@ -1,0 +1,15 @@
+---
+- name: Create dir
+  file:
+    path: "/home/{{ user }}/.zabb_bak"
+    state: directory
+    mode: 0755
+- name: Copy conf file
+
+  copy:
+    src: /etc/zabbix/zabbix_agentd.conf
+    dest: /home/{{ user }}/.zabb_bak/zabbix_agentd.conf.bak
+    remote_src: yes
+    
+- name: Del old conf
+  file: path=/etc/zabbix/zabbix_agentd.conf state=absent
