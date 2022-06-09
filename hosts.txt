@@ -1,0 +1,18 @@
+[linux_servers]
+ansible_host=
+
+[linux_servers:vars]
+ansible_user=
+ansible_become_password=
+ansible_python_interpreter=/usr/bin/python3
+
+[win_servers]
+ansible_host=
+
+[win_servers:vars]
+ansible_user = 
+ansible_password = 
+ansible_port = 5986
+ansible_connection = winrm
+ansible_winrm_server_cert_validation = ignore
+ansible_winrm_transport = ntlm

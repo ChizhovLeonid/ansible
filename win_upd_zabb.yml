@@ -1,0 +1,13 @@
+---
+- hosts: win_servers
+  ignore_errors: yes
+
+  vars_files:
+    - ./vars/defaults.yml
+
+  tasks:
+  - name: Check version
+    win_shell: Get-WmiObject -Class Win32_Product -Filter "Name = 'Zabbix Agent (64-bit)'" 
+    register: za_version
+
+  - include: Win_upd/check_win_curr.yml

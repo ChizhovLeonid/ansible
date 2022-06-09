@@ -1,0 +1,8 @@
+---
+- name: Find and Replace server IP
+  win_shell: (Get-Content "{{ dir_win_conf }}") | ForEach-Object { $_ -replace "^Server=.*", "Server={{ srv_ip }}" } | Set-Content "{{ dir_win_conf }}"
+  
+- name: Restart ZA
+  win_service:
+    name: Zabbix Agent
+    state: restarted

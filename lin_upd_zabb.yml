@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: linux_servers
   ignore_errors: yes
   become: yes
   vars_files:
@@ -20,7 +20,7 @@
     package_facts:
       manager: "auto"
 
-  - include: check_to_curr.yml
+  - include: Lin_upd/check_to_curr.yml
   
   - name: Parcing list pkg
     package_facts:

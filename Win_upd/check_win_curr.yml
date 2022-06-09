@@ -1,0 +1,12 @@
+---
+- block: # ===CHECK VERSION===
+  - include: install.yml
+  when: za_version.stdout == ""
+
+- block: # ===CHECK VERSION===
+  - include: upd_win.yml
+  when: za_version | regex_search('.*{{ win_latest }}.*') == None and za_version.stdout != ""
+
+- block: # ===CHECK VERSION===
+  - include: upd_win_ip.yml
+  when: za_version | regex_search('.*{{ win_latest }}.*')

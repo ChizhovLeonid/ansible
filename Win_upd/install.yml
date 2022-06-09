@@ -1,0 +1,13 @@
+---
+- name: Create dir for download pack
+  win_file:
+    path: C:\Dist
+    State: directory
+
+- name: Download latest release
+  win_get_url:
+    url: "{{ win_url }}"
+    dest: "{{ win_path }}"
+
+- name: Install latest
+  win_shell: msiexec /i "{{ win_path }}" /qn SERVER={{ srv_ip }} LISTENPORT=10050 HOSTNAME={{ inventory_hostname }}
