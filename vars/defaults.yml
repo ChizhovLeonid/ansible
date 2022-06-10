@@ -1,18 +1,20 @@
 ---
 user: 
-deb11_pack: http://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix/zabbix-agent_6.0.4-1%2Bdebian11_amd64.deb
-deb10_pack: http://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix/zabbix-agent_6.0.4-1%2Bdebian10_amd64.deb
-deb9_pack: http://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix/zabbix-agent_6.0.4-1%2Bdebian9_amd64.deb
+deb11_pack: http://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix/zabbix-agent_6.0.5-1%2Bdebian11_amd64.deb
+deb10_pack: http://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix/zabbix-agent_6.0.5-1%2Bdebian10_amd64.deb
+deb9_pack: http://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix/zabbix-agent_6.0.5-1%2Bdebian9_amd64.deb
 
-ver_zabb_deb11: 1:6.0.4-1+debian11
-ver_zabb_deb10: 1:6.0.4-1+debian10
-ver_zabb_deb9: 1:6.0.4-1+debian9
+lin_ver_lat: 6.0.4
 dir_config: /etc/zabbix/zabbix_agentd.conf
+
+ubu22_pack: https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix/zabbix-agent_6.0.5-1%2Bubuntu22.04_amd64.deb
+ubu20_pack: https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix/zabbix-agent_6.0.5-1%2Bubuntu20.04_amd64.deb
+ubu18_pack: https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix/zabbix-agent_6.0.5-1%2Bubuntu18.04_amd64.deb
 
 win_url: https://cdn.zabbix.com/zabbix/binaries/stable/6.0/6.0.5/zabbix_agent-6.0.5-windows-amd64-openssl.msi
 
 win_path: C:\Dist\zabbix_agent-6.0.5-windows-amd64-openssl.msi
-win_latest: 6.0.5
+win_ver_lat: 6.0.5
 dir_old_win_conf: C:\Program Files\Zabbix Agent.bak\zabbix_agentd.conf.bak
 dir_win_conf: C:\Program Files\Zabbix Agent\zabbix_agentd.conf
 

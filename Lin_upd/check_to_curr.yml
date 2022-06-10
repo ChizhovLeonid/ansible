@@ -3,12 +3,18 @@
     - include: upd_proc.yml
     - include: install.yml
     - include: change_value.yml
-  when: (ansible_facts.packages['zabbix-agent'][0].version != "{{ ver_zabb_deb11 }}" and ansible_distribution_major_version == "11") or 
-        (ansible_facts.packages['zabbix-agent'][0].version != "{{ ver_zabb_deb10 }}" and ansible_distribution_major_version == "10") or
-        (ansible_facts.packages['zabbix-agent'][0].version != "{{ ver_zabb_deb9 }}" and ansible_distribution_major_version == "9")
+  when: (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') == None and ansible_distribution_major_version == "11") or 
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') == None and ansible_distribution_major_version == "10") or
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') == None and ansible_distribution_major_version == "9") or
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') == None and ansible_distribution_major_version == "22") or
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') == None and ansible_distribution_major_version == "20") or
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') == None and ansible_distribution_major_version == "18")
 
 - block: # ===CHECK VERSION AND UPDATE CONFIG===
     - include: change_value.yml
-  when: (ansible_facts.packages['zabbix-agent'][0].version == "{{ ver_zabb_deb11 }}" and ansible_distribution_major_version == "1") or 
-        (ansible_facts.packages['zabbix-agent'][0].version == "{{ ver_zabb_deb10 }}" and ansible_distribution_major_version == "10") or
-        (ansible_facts.packages['zabbix-agent'][0].version == "{{ ver_zabb_deb9 }}" and ansible_distribution_major_version == "9")
+  when: (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') and ansible_distribution_major_version == "11") or 
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') and ansible_distribution_major_version == "10") or
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') and ansible_distribution_major_version == "9") or
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') and ansible_distribution_major_version == "22") or
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') and ansible_distribution_major_version == "20") or
+        (ansible_facts.packages['zabbix-agent'][0].version | regex_search('.*{{ lin_ver_lat }}.*') and ansible_distribution_major_version == "18") or
