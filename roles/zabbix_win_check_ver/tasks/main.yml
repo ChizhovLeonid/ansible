@@ -1,0 +1,9 @@
+---
+# tasks file for zabbix_upd_win
+- name: Check version
+  win_shell: Get-WmiObject -Class Win32_Product -Filter "Name = 'Zabbix Agent (64-bit)'" 
+  register: za_version
+
+- name: Show version Zabbix agent
+  debug:
+    var: za_version

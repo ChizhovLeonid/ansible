@@ -1,0 +1,31 @@
+---
+- name: Parcing list pkg
+  package_facts:
+    manager: "auto"
+
+- name: Read version
+  shell: zabbix_agentd -V | grep -w zabbix_agentd | cut -c33-40
+  register: zabb_host
+# - name: Show version Zabbix agent from shell
+#   debug: var=zabb_host.stdout
+
+- block: # ===CHECK INSTALL===
+  - name: Install act version
+    import_tasks: install.yml
+  - name: Update value
+    import_tasks: update_val.yml
+  when: "'zabbix-agent' not in ansible_facts.packages"
+
+- block: # ===CHECK VERSION IF INSTALL AND IF VERSION LOWER THAN IN VARS/MAIN===
+  - name: Copy config file
+    import_tasks: copy_conf.yml
+  - name: Install act version
+    import_tasks: install.yml
+  - name: Update value
+    import_tasks: update_val.yml
+  when: (zabb_host.stdout is version ("{{ zabb_ver }}", '<='))
+
+ - block: # ===CHECK VERSION IF INSTALL AND IF VERSION HIGHER THAN IN VARS/MAIN===
+  - name: Update value
+    import_tasks: update_val.yml
+  when: (zabb_host.stdout is version ("{{ zabb_ver }}", '>='))

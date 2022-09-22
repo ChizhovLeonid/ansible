@@ -1,0 +1,6 @@
+- hosts: win_servers
+  ignore_errors: yes
+  strategy: free
+
+  roles:
+    - zabbix_win_check_ver

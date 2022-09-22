@@ -1,0 +1,36 @@
+---
+- name: Install current version on 9 debian
+  apt: deb={{ deb9_pack }}
+  when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "9")
+
+- name: Install current version on 10 debian
+  apt: deb={{ deb10_pack }}
+  when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "10")
+
+- name: Install current version on 11 debian
+  apt: deb={{ deb11_pack }}
+  when: (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "11")
+
+- name: Install current version on Ubuntu 22
+  apt: deb={{ ubu22_pack }}
+  when: (ansible_facts['distribution'] == "Ubuntu" and ansible_distribution_major_version == "22")
+
+- name: Install current version on Ubuntu 20
+  apt: deb={{ ubu20_pack }}
+  when: (ansible_facts['distribution'] == "Ubuntu" and ansible_distribution_major_version == "20")
+
+- name: Install current version on Ubuntu 18
+  apt: deb={{ ubu18_pack }}
+  when: (ansible_facts['distribution'] == "Ubuntu" and ansible_distribution_major_version == "18")
+
+- name: Install current version on Ubuntu 16
+  apt: deb={{ ubu16_pack }}
+  when: (ansible_facts['distribution'] == "Ubuntu" and ansible_distribution_major_version == "16")
+
+- name: Install current version on centos 7
+  package: 
+    name: "{{ cen7_pack }}"
+    state: present
+  vars:
+    ansible_python_interpreter: "/usr/bin/python"
+  when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "7")

@@ -1,0 +1,11 @@
+---
+# vars file for zabbix_upd_win
+srv_ip: 10.50.0.245
+zabb_ver: 6.0.5
+main_ver: 6.0
+
+win_url: http://cdn.zabbix.com/zabbix/binaries/stable/{{ main_ver }}/{{ zabb_ver }}/zabbix_agent-{{ zabb_ver }}-windows-amd64-openssl.msi
+
+win_path: C:\Dist\zabbix_agent-{{ zabb_ver }}-windows-amd64-openssl.msi
+dir_old_win_conf: C:\Program Files\Zabbix Agent.bak\zabbix_agentd.conf.bak
+dir_win_conf: C:\Program Files\Zabbix Agent\zabbix_agentd.conf

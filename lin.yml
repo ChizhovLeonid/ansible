@@ -1,0 +1,7 @@
+- hosts: lin_servers
+  ignore_errors: yes
+  become: yes
+  #strategy: free
+
+  roles:
+    - zabbix_lin_check_ver

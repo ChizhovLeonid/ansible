@@ -1,0 +1,18 @@
+---
+# vars file for zabbix_upd_lin
+srv_ip: 10.50.0.245
+zabb_ver: 6.0.5
+main_ver: 6.0
+
+dir_config: /etc/zabbix/zabbix_agentd.conf
+
+deb11_pack: http://repo.zabbix.com/zabbix/{{ main_ver }}/debian/pool/main/z/zabbix/zabbix-agent_{{ zabb_ver }}-1%2Bdebian11_amd64.deb
+deb10_pack: http://repo.zabbix.com/zabbix/{{ main_ver }}/debian/pool/main/z/zabbix/zabbix-agent_{{ zabb_ver }}-1%2Bdebian10_amd64.deb
+deb9_pack: http://repo.zabbix.com/zabbix/{{ main_ver }}/debian/pool/main/z/zabbix/zabbix-agent_{{ zabb_ver }}-1%2Bdebian9_amd64.deb
+
+ubu22_pack: http://repo.zabbix.com/zabbix/{{ main_ver }}/ubuntu/pool/main/z/zabbix/zabbix-agent_{{ zabb_ver }}-1%2Bubuntu22.04_amd64.deb
+ubu20_pack: http://repo.zabbix.com/zabbix/{{ main_ver }}/ubuntu/pool/main/z/zabbix/zabbix-agent_{{ zabb_ver }}-1%2Bubuntu20.04_amd64.deb
+ubu18_pack: http://repo.zabbix.com/zabbix/{{ main_ver }}/ubuntu/pool/main/z/zabbix/zabbix-agent_{{ zabb_ver }}-1%2Bubuntu18.04_amd64.deb
+ubu16_pack: http://repo.zabbix.com/zabbix/{{ main_ver }}/ubuntu/pool/main/z/zabbix/zabbix-agent_{{ zabb_ver }}-1%2Bubuntu16.04_amd64.deb
+
+cen7_pack: http://repo.zabbix.com/zabbix/{{ main_ver }}/rhel/7/x86_64/zabbix-agent-{{ zabb_ver }}-1.el7.x86_64.rpm
